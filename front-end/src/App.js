@@ -1,6 +1,6 @@
 import './App.css';
 import CurrencyInput from "./CurrencyInput";
-import {useState, useEffect} from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 function App() {
@@ -18,6 +18,30 @@ function App() {
       })
   }, []);
 
+  const format = (number) => {
+    return number.toFixed(4);
+  }
+
+  const handleAmount1Change = useCallback((amount1) => {
+    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
+    setAmount1(amount1);
+  }, [rates, currency1, currency2]);
+
+  const handleCurrency1Change = (currency1) => {
+    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
+    setCurrency1(currency1);
+  }
+
+  const handleAmount2Change = (amount2) => {
+    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
+    setAmount2(amount2);
+  }
+
+  const handleCurrency2Change = (currency2) => {
+    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
+    setCurrency2(currency2);
+  }
+
   useEffect(() => {
     if (!!rates) {
       function init() {
@@ -26,33 +50,6 @@ function App() {
       init();
     }
   }, [handleAmount1Change, rates]);
-
-
-
-  function format(number) {
-    return number.toFixed(4);
-  }
-
-  function handleAmount1Change(amount1) {
-    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
-    setAmount1(amount1);
-  }
-
-  function handleCurrency1Change(currency1) {
-    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
-    setCurrency1(currency1);
-  }
-
-  function handleAmount2Change(amount2) {
-    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
-    setAmount2(amount2);
-  }
-
-  function handleCurrency2Change(currency2) {
-    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
-    setCurrency2(currency2);
-  }
-
 
   return (
     <div>
