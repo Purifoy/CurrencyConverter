@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+/*import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 const ExchangeRateChart = ({ historicalData }) => {
@@ -44,3 +44,4 @@ const ExchangeRateChart = ({ historicalData }) => {
 };
 
 export default ExchangeRateChart;
+*/
