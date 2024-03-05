@@ -1,4 +1,4 @@
-# CurrencyConverter
+# Currency Converter
 ![Screenshot (193)](https://github.com/Purifoy/CurrencyConverter/assets/24870574/3be365e7-73bb-4bb3-b530-05b97831d073)
 
 ## **Overview**
