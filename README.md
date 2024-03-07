@@ -12,8 +12,7 @@ Country Information: Flags and country names are displayed alongside currency co
 #User-Friendly Interface# The app features an intuitive and easy-to-use interface, making it accessible to users with varying levels of familiarity with currency conversion.
 
 ## **Technologies Used**
-![image](https://github.com/Purifoy/CurrencyConverter/assets/24870574/a39de30b-693f-4978-a760-025c8c31adef)
-![image](https://github.com/Purifoy/CurrencyConverter/assets/24870574/8c034e6b-0d76-4272-a1e2-4e22fc4dae12)
+
 
 
 React: The app is built using the React library, providing a modular and efficient way to manage the user interface.
