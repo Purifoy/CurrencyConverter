@@ -12,6 +12,9 @@ Country Information: Flags and country names are displayed alongside currency co
 #User-Friendly Interface# The app features an intuitive and easy-to-use interface, making it accessible to users with varying levels of familiarity with currency conversion.
 
 ## **Technologies Used**
+
+
+
 React: The app is built using the React library, providing a modular and efficient way to manage the user interface.
 
 Axios: Axios is used for making HTTP requests to fetch real-time exchange rates and additional currency information.
