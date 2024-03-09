@@ -1,84 +1,71 @@
-// YourComponent.js
-import React, { useState } from 'react';
-import { currency } from './currency';
+// CurrencyConverterApp.js
+import './App.css';
+import CurrencyInput from "./CurrencyInput";
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
 
 const CurrencyConverterApp = () => {
-  // State to manage user inputs and selected currencies
-  const [amount1, setAmount1] = useState('');
-  const [currency1, setCurrency1] = useState('usd');
-  const [amount2, setAmount2] = useState('');
-  const [currency2, setCurrency2] = useState('eur');
+  const [amount1, setAmount1] = useState(1);
+  const [amount2, setAmount2] = useState(1);
+  const [currency1, setCurrency1] = useState('USD');
+  const [currency2, setCurrency2] = useState('EUR');
+  const [rates, setRates] = useState([]);
 
-  // Conversion function (you might have a separate utility for this)
-  const convertCurrency = () => {
-    // Perform your currency conversion logic here
-    // For simplicity, this example assumes a 1:1 conversion
-    const convertedAmount = parseFloat(amount1) || 0;
-    setAmount2((convertedAmount).toFixed(2));
+  useEffect(() => {
+    axios.get('https://api.apilayer.com/fixer/latest?base=USD&a&apikey=fnxFXZRUPvbjUAsyWJpoheiW9Tpd7FBc')
+      .then(response => {
+        setRates(response.data.rates);
+      });
+  }, []);
+
+  const format = (number) => {
+    return number.toFixed(4);
   };
 
-  // Event handlers for input and select changes
-  const handleAmount1Change = (event) => setAmount1(event.target.value);
-  const handleCurrency1Change = (event) => setCurrency1(event.target.value);
-  const handleAmount2Change = (event) => setAmount2(event.target.value);
-  const handleCurrency2Change = (event) => setCurrency2(event.target.value);
+  const handleAmount1Change = useCallback((amount1) => {
+    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
+    setAmount1(amount1);
+  }, [rates, currency1, currency2]);
+
+  const handleCurrency1Change = (currency1) => {
+    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
+    setCurrency1(currency1);
+  };
+
+  const handleAmount2Change = (amount2) => {
+    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
+    setAmount2(amount2);
+  };
+
+  const handleCurrency2Change = (currency2) => {
+    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
+    setCurrency2(currency2);
+  };
+
+  useEffect(() => {
+    if (!!rates) {
+      function init() {
+        handleAmount1Change(1);
+      }
+      init();
+    }
+  }, [handleAmount1Change, rates]);
 
   return (
-    <div className="container">
+    <div>
       <h1>Currency Converter</h1>
-
-      <div className="CurrencyInput">
-        <div className="input-container">
-          <label className="label">Amount</label>
-          <input
-            type="number"
-            value={amount1}
-            onChange={handleAmount1Change}
-          />
-        </div>
-
-        <div className="input-container">
-          <label className="label">Currency</label>
-          <select
-            value={currency1}
-            onChange={handleCurrency1Change}
-          >
-            {currency.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <button onClick={convertCurrency}>Convert</button>
-
-      <div className="CurrencyInput">
-        <div className="input-container">
-          <label className="label">Converted Amount</label>
-          <input
-            type="text"
-            value={amount2}
-            onChange={handleAmount2Change}
-            readOnly
-          />
-        </div>
-
-        <div className="input-container">
-          <label className="label">Currency</label>
-          <select
-            value={currency2}
-            onChange={handleCurrency2Change}
-          >
-            {currency.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      <CurrencyInput
+        onAmountChange={handleAmount1Change}
+        onCurrencyChange={handleCurrency1Change}
+        currencies={Object.keys(rates)}
+        amount={amount1}
+        currency={currency1} />
+      <CurrencyInput
+        onAmountChange={handleAmount2Change}
+        onCurrencyChange={handleCurrency2Change}
+        currencies={Object.keys(rates)}
+        amount={amount2}
+        currency={currency2} />
     </div>
   );
 };
