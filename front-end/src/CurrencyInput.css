@@ -54,6 +54,7 @@ select {
   border-bottom: 2px solid #00bcd4;
   outline: none;
   transition: border-color 0.3s;
+  transform: translateY(0); /* Ensure the dropdown opens downward */
 }
 
 input:focus,
