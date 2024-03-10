@@ -1,6 +1,7 @@
 // CurrencyConverterApp.js
 import './App.css';
 import CurrencyInput from "./CurrencyInput";
+import CurrencyList from "./CurrencyList";
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
@@ -10,11 +11,13 @@ const CurrencyConverterApp = () => {
   const [currency1, setCurrency1] = useState('USD');
   const [currency2, setCurrency2] = useState('EUR');
   const [rates, setRates] = useState([]);
+  const [currencyList, setCurrencyList] = useState([]); // State to hold currency list
 
   useEffect(() => {
     axios.get('https://v6.exchangerate-api.com/v6/7b7fb6b4caf4eaa80cfb2775/latest/USD')
       .then(response => {
         setRates(response.data.conversion_rates);
+        setCurrencyList(response.data.conversion_rates);
       });
   }, []);
 
@@ -42,15 +45,6 @@ const CurrencyConverterApp = () => {
     setCurrency2(currency2);
   };
 
-  useEffect(() => {
-    if (!!rates) {
-      function init() {
-        handleAmount1Change(1);
-      }
-      init();
-    }
-  }, [handleAmount1Change, rates]);
-
   return (
     <div>
       <h1>Currency Converter</h1>
@@ -59,13 +53,16 @@ const CurrencyConverterApp = () => {
         onCurrencyChange={handleCurrency1Change}
         currencies={Object.keys(rates)}
         amount={amount1}
-        currency={currency1} />
+        currency={currency1}
+      />
       <CurrencyInput
         onAmountChange={handleAmount2Change}
         onCurrencyChange={handleCurrency2Change}
         currencies={Object.keys(rates)}
         amount={amount2}
-        currency={currency2} />
+        currency={currency2}
+      />
+      <CurrencyList currencies={currencyList} />
     </div>
   );
 };
