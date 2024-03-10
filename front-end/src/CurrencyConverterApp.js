@@ -12,9 +12,9 @@ const CurrencyConverterApp = () => {
   const [rates, setRates] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.apilayer.com/fixer/latest?base=USD&a&apikey=fnxFXZRUPvbjUAsyWJpoheiW9Tpd7FBc')
+    axios.get('https://v6.exchangerate-api.com/v6/7b7fb6b4caf4eaa80cfb2775/latest/USD')
       .then(response => {
-        setRates(response.data.rates);
+        setRates(response.data.conversion_rates);
       });
   }, []);
 
