@@ -1,4 +1,4 @@
-/*import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import "./CurrencyInput.css";
 
 function CurrencyInput(props) {
@@ -30,4 +30,3 @@ CurrencyInput.propTypes = {
 };
 
 export default CurrencyInput;
-*/

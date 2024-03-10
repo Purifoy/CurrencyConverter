@@ -1,4 +1,4 @@
-/*// CurrencyList.js
+// CurrencyList.js
 import React from 'react';
 
 const CurrencyList = ({ currencies }) => {
@@ -15,4 +15,3 @@ const CurrencyList = ({ currencies }) => {
 };
 
 export default CurrencyList;
-*/
