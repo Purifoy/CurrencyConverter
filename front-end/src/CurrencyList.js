@@ -6,8 +6,8 @@ const CurrencyList = ({ currencies }) => {
     <div>
       <h2>Currency List</h2>
       <ul>
-        {currencies.map((currency) => (
-          <li key={currency.value}>{`${currency.label} - ${currency.value}`}</li>
+        {Object.entries(currencies).map(([currencyCode, exchangeRate]) => (
+          <li key={currencyCode}>{`${currencyCode} - ${exchangeRate}`}</li>
         ))}
       </ul>
     </div>
