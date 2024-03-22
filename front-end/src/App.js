@@ -2,7 +2,7 @@
 import React from "react";
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import ChartPage from "./ChartPage";
-import CurrencyConverterApp from "./CurrencyConverterApp";
+import CurrencyConverterApp from "./components/CurrencyConverterApp";
 
 const Navigation = () => {
   return (
