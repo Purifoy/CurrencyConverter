@@ -1,8 +1,8 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import CurrencyConverterApp from "./CurrencyConverterApp";
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import ChartPage from "./ChartPage";
+import CurrencyConverterApp from "./CurrencyConverterApp";
 
 const Navigation = () => {
   return (

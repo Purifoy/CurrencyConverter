@@ -1,9 +1,9 @@
 // CurrencyConverterApp.js
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
+import CurrencyList from "./CurrencyList";
 import './App.css';
 import CurrencyInput from "./CurrencyInput";
-import CurrencyList from "./CurrencyList";
-import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
 
 const CurrencyConverterApp = () => {
   const [amount1, setAmount1] = useState(1);
