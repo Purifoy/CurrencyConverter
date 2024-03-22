@@ -1,46 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+// ChartPage.js
+import React from "react";
+import ExchangeRateChart from "./ExchangeRateChart";
+import { historicalData } from "./data"; // Assuming you have historical data
 
-const ExchangeRateChart = ({ historicalData }) => {
-  const chartRef = useRef(null);
-
-  useEffect(() => {
-    if (chartRef.current) {
-      const ctx = chartRef.current.getContext("2d");
-
-      new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: historicalData.labels,
-          datasets: [
-            {
-              label: "Exchange Rate Trends",
-              data: historicalData.data,
-              borderColor: "#00bcd4",
-              borderWidth: 2,
-              fill: false,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            x: {
-              type: "linear",
-              position: "bottom",
-            },
-          },
-        },
-      });
-    }
-  }, [historicalData]);
-
+const ChartPage = () => {
   return (
     <div>
-      <canvas ref={chartRef} width="400" height="200" />
+      <h1>Exchange Rate Chart</h1>
+      <ExchangeRateChart historicalData={historicalData} />
     </div>
   );
 };
 
-export default ExchangeRateChart;
+export default ChartPage;
