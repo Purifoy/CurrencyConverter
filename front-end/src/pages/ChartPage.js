@@ -1,9 +1,9 @@
-// ExchangeRateChart.js
+
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const ExchangeRateChart = ({ historicalData }) => {
   const chartRef = useRef(null);
 
@@ -14,12 +14,10 @@ const ExchangeRateChart = ({ historicalData }) => {
       new Chart(ctx, {
         type: "line",
         data: {
-          // eslint-disable-next-line react/prop-types
           labels: historicalData.labels,
           datasets: [
             {
               label: "Exchange Rate Trends",
-              // eslint-disable-next-line react/prop-types
               data: historicalData.data,
               borderColor: "#00bcd4",
               borderWidth: 2,
@@ -46,6 +44,13 @@ const ExchangeRateChart = ({ historicalData }) => {
       <canvas ref={chartRef} width="400" height="200" />
     </div>
   );
+};
+
+ExchangeRateChart.propTypes = {
+  historicalData: PropTypes.shape({
+    labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+    data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }).isRequired,
 };
 
 export default ExchangeRateChart;
