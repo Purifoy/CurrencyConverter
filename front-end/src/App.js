@@ -1,7 +1,7 @@
 
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Link, Route, BrowserRouter as Router, Switch as RouterSwitch } from 'react-router-dom';
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import ChartPage from './ChartPage';
 import CurrencyConverterApp from './components/CurrencyConverterApp';
 
@@ -24,10 +24,10 @@ const Routes = () => {
   return (
     <Router>
       <Navigation />
-      <RouterSwitch>
+      <Switch>
         <Route exact path="/" component={CurrencyConverterApp} />
         <Route path="/chart" component={ChartPage} />
-      </RouterSwitch>
+      </Switch>
     </Router>
   );
 };
