@@ -14,6 +14,7 @@ function CurrencyInput(props) {
         onChange={(ev) => props.onCurrencyChange(ev.target.value)}
       >
         {props.currencies.map((currency) => (
+          // eslint-disable-next-line react/jsx-key
           <option value={currency}>{currency}</option>
         ))}
       </select>
