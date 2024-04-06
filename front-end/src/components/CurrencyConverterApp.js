@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import CurrencyList from "./CurrencyList";
-import './App.css';
+
 import CurrencyInput from "./CurrencyInput";
 
 const CurrencyConverterApp = () => {

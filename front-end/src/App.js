@@ -1,4 +1,5 @@
 // App.js
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import ChartPage from "./ChartPage";
