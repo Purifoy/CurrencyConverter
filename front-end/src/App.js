@@ -1,9 +1,10 @@
 
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Link, Route, BrowserRouter as Router, Switch as RouterSwitch } from 'react-router-dom'; // Import as RouterSwitch
 import ChartPage from './pages/ChartPage';
 import CurrencyConverterApp from './components/CurrencyConverterApp';
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+
 
 const Navigation = () => {
   return (
