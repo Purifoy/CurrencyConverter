@@ -15,8 +15,8 @@ Country Information: Flags and country names are displayed alongside currency co
 
 
 
-###React: The app is built using the React library, providing a modular and efficient way to manage the user interface.
+### React: The app is built using the React library, providing a modular and efficient way to manage the user interface.
 
-###Axios: Axios is used for making HTTP requests to fetch real-time exchange rates and additional currency information.
+### Axios: Axios is used for making HTTP requests to fetch real-time exchange rates and additional currency information.
 
-###CSS: The styling is done using CSS to create a visually appealing and responsive design.
+### CSS: The styling is done using CSS to create a visually appealing and responsive design.
